@@ -6,6 +6,8 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "forceConsistentCasingInFileNames": false,
+    "assetBundlePatterns": ["assets/fonts/Stratos-Regular.tff"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
