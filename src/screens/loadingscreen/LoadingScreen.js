@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Image, Animated, Easing, StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, Animated, Easing, StyleSheet } from 'react-native';
 
 const LoadingScreen = () => {
   const [animation] = useState(new Animated.Value(0));
@@ -48,9 +48,10 @@ const LoadingScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width:'100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#CEE7ED',
+    backgroundColor: '#F5F5F5',
   },
   imageContainer: {
     width: 200,
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: '60%',
-    height: '60%',
+    width: '50%',
+    height: '50%',
   },
 });
 

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, TextInput, Pressable, KeyboardAvoidingView, Keyboard } from "react-native";
+import { Text, View, Image, Pressable,StyleSheet} from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import StartScreenCss from './StartScreenCss';
 
 const StartScreen = ({navigation}) => {
@@ -11,15 +11,22 @@ const StartScreen = ({navigation}) => {
         <Image style={StartScreenCss.headerImagestyle} source={require("../../../assets/smallLogo.png")} />
       </View>
       <View style={StartScreenCss.container10}>
-        <Text style={StartScreenCss.texts2}>Meld je aan en ga direct van start met een leuke wandeling</Text>
+        <Text style={StartScreenCss.texts2}>Ga aan de slag met wandelen. Ontdek leuke culturele plekken bij jou in de buurt</Text>
       </View>
       <View style={StartScreenCss.container8}>
         <Pressable style={StartScreenCss.button} onPress={() => navigation.navigate("Login", { email: "jordyhu@live.nl" })}>
-          <Text style={StartScreenCss.texts3}>Inloggen</Text>
+        <LinearGradient
+          colors={['#94A97F', '#758C5E']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={[StyleSheet.absoluteFill,{color:'#fff'}]}
+        ></LinearGradient>
+        <Text style={StartScreenCss.texts4}>Inloggen</Text>
+        
         </Pressable>
       </View>
       <View style={StartScreenCss.container8}>
-        <Pressable style={StartScreenCss.button} onPress={() => navigation.navigate("SignUp email", { email: "jordyhu@live.nl" })}>
+        <Pressable style={StartScreenCss.button2} onPress={() => navigation.navigate("SignUp email", { email: "jordyhu@live.nl" })}>
           <Text style={StartScreenCss.texts3}>Aanmelden</Text>
         </Pressable>
       </View>

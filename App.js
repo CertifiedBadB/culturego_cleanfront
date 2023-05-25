@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { StyleSheet, Text, View, StatusBar,Animated   } from 'react-native';
+import { useEffect, useState, useRef } from 'react';
+import { StyleSheet, View, StatusBar,Animated   } from 'react-native';
 import * as Font from 'expo-font';
 import * as NavigationBar from 'expo-navigation-bar';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,7 +7,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StartScreen from './src/screens/startscreen/StartScreen';
 import LoadingScreen from './src/screens/loadingscreen/LoadingScreen';
 import LoginScreen from './src/screens/loginscreen/LoginScreen';
-import { KeepAwake } from 'expo-keep-awake';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -43,11 +42,15 @@ export default function App() {
     }, 2000); // Simulating a loading delay
   }, []);
 
+
+
+
+
   if (!fontLoaded) {
     return (
       
       <View style={styles.container}>
-        <StatusBar translucent backgroundColor="#CEE7ED" />
+        <StatusBar translucent backgroundColor="#F5F5F5" />
         <LoadingScreen />
       </View>
     );
@@ -55,7 +58,7 @@ export default function App() {
 
   return ( 
     <NavigationContainer >
-      <StatusBar translucent backgroundColor="#CEE7ED" />
+      <StatusBar translucent backgroundColor="#F5F5F5" />
       <Stack.Navigator >
       <Stack.Screen 
         name="Startup"
@@ -74,7 +77,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: '#CEE7ED',
+    backgroundColor: '#F5F5F5',
     marginTop: StatusBar.currentHeight || 0,
   },
   container: {
