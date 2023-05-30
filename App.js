@@ -7,8 +7,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StartScreen from './src/screens/startscreen/StartScreen';
 import LoadingScreen from './src/screens/loadingscreen/LoadingScreen';
 import LoginScreen from './src/screens/loginscreen/LoginScreen';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import SignUp1Screen from './src/screens/signupscreens/signupstep1/SignUp1';
+import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
+import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -67,6 +68,21 @@ export default function App() {
           <Stack.Screen
             name="Login"
             component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp1"
+            component={SignUp1Screen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp2"
+            component={SignUp2Screen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp3"
+            component={SignUp3Screen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 
 
-const LogincreenCss = StyleSheet.create({
+const SignUp2Css = StyleSheet.create({
   container4:{
     flex:0.04,
     width: null,
@@ -38,8 +38,8 @@ const LogincreenCss = StyleSheet.create({
         fontFamily: "stratos",
         borderRadius: 50,
         elevation: 5,
-        backgroundColor: '#5D7049',
-        color:"#fff"
+        backgroundColor: '#fff',
+        color:"#5D7049"
       },
       button2: {
         alignSelf: "baseline",
@@ -132,7 +132,7 @@ const LogincreenCss = StyleSheet.create({
         alignSelf: "center",
         textAlign: "center",
         fontSize: 14,
-        color: "#fff",
+        color: "#5AA0A7",
       },
       headerImagestyle: {
         alignSelf: "flex-start",
@@ -144,4 +144,4 @@ const LogincreenCss = StyleSheet.create({
       }
 });
 
-export default LogincreenCss;
+export default SignUp2Css;

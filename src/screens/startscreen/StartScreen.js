@@ -26,7 +26,7 @@ const StartScreen = ({navigation}) => {
         </Pressable>
       </View>
       <View style={StartScreenCss.container8}>
-        <Pressable style={StartScreenCss.button2} onPress={() => navigation.navigate("SignUp email", { email: "jordyhu@live.nl" })}>
+        <Pressable style={StartScreenCss.button2} onPress={() => navigation.navigate("SignUp1", { email: "jordyhu@live.nl" })}>
           <Text style={StartScreenCss.texts3}>Aanmelden</Text>
         </Pressable>
       </View>
