@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { StyleSheet, View, StatusBar,Animated   } from 'react-native';
+import { StyleSheet, View, StatusBar, Animated } from 'react-native';
 import * as Font from 'expo-font';
 import * as NavigationBar from 'expo-navigation-bar';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,12 +7,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StartScreen from './src/screens/startscreen/StartScreen';
 import LoadingScreen from './src/screens/loadingscreen/LoadingScreen';
 import LoginScreen from './src/screens/loginscreen/LoginScreen';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   NavigationBar.setVisibilityAsync("hidden");
+
   useEffect(() => {
     const timer = setTimeout(() => {
       loadFonts();
@@ -23,8 +26,8 @@ export default function App() {
 
   const loadFonts = async () => {
     await NavigationBar.setVisibilityAsync("hidden");
-    NavigationBar.setBackgroundColorAsync('#CEE7ED')
-    await NavigationBar.setBehaviorAsync('overlay-swipe')
+    NavigationBar.setBackgroundColorAsync('#CEE7ED');
+    await NavigationBar.setBehaviorAsync('overlay-swipe');
     await Font.loadAsync({
       'stratos': require('./assets/fonts/Stratos-Regular.ttf'),
     });
@@ -42,13 +45,8 @@ export default function App() {
     }, 2000); // Simulating a loading delay
   }, []);
 
-
-
-
-
   if (!fontLoaded) {
     return (
-      
       <View style={styles.container}>
         <StatusBar translucent backgroundColor="#F5F5F5" />
         <LoadingScreen />
@@ -56,35 +54,30 @@ export default function App() {
     );
   }
 
-  return ( 
-    <NavigationContainer >
+  return (
+    <View style={styles.container}>
       <StatusBar translucent backgroundColor="#F5F5F5" />
-      <Stack.Navigator >
-      <Stack.Screen 
-        name="Startup"
-        component={StartScreen}
-        options={{headerShown: false}}
-        />
-      <Stack.Screen 
-        name="Login"
-        component={LoginScreen}
-        options={{headerShown: false}}
-        />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Startup"
+            component={StartScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
-        </NavigationContainer>
+      </NavigationContainer>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  statusBar: {
-    backgroundColor: '#F5F5F5',
-    marginTop: StatusBar.currentHeight || 0,
-  },
   container: {
-    marginTop: StatusBar.currentHeight || 0,
     flex: 1,
     backgroundColor: '#CEE7ED',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
