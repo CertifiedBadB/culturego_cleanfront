@@ -76,7 +76,8 @@ const Logincreen = ({navigation}) => {
           const userId = decodedToken.id;
           if(userId == UID){
             console.log('User ID:', userId);
-            // Do something with the token and user ID
+            //go to the profile screen
+            navigation.navigate('Profile', { value: userId , token })
           }
           
         } else {

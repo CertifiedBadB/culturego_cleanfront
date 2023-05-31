@@ -10,6 +10,7 @@ import LoginScreen from './src/screens/loginscreen/LoginScreen';
 import SignUp1Screen from './src/screens/signupscreens/signupstep1/SignUp1';
 import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
 import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
+import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -60,9 +61,15 @@ export default function App() {
       <StatusBar translucent backgroundColor="#F5F5F5" />
       <NavigationContainer>
         <Stack.Navigator>
+        
           <Stack.Screen
             name="Startup"
             component={StartScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
