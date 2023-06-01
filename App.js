@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { StyleSheet, View, StatusBar, Animated } from 'react-native';
+import { StyleSheet, View, StatusBar, Animated,Platform } from 'react-native';
 import * as Font from 'expo-font';
 import * as NavigationBar from 'expo-navigation-bar';
 import { NavigationContainer } from '@react-navigation/native';
@@ -11,12 +11,15 @@ import SignUp1Screen from './src/screens/signupscreens/signupstep1/SignUp1';
 import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
 import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
 import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
+import WalkingScreen from './src/screens/walkingscreen/WalkingScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
-  NavigationBar.setVisibilityAsync("hidden");
+  if (Platform.OS === 'android') {
+     NavigationBar.setVisibilityAsync("hidden");
+    }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,9 +30,12 @@ export default function App() {
   }, []);
 
   const loadFonts = async () => {
+    if (Platform.OS === 'android') {
     await NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBackgroundColorAsync('#CEE7ED');
     await NavigationBar.setBehaviorAsync('overlay-swipe');
+    }
+    
     await Font.loadAsync({
       'stratos': require('./assets/fonts/Stratos-Regular.ttf'),
     });
@@ -90,6 +96,11 @@ export default function App() {
           <Stack.Screen
             name="SignUp3"
             component={SignUp3Screen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Walking"
+            component={WalkingScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

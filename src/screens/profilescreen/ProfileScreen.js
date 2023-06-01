@@ -1,17 +1,17 @@
 import { Text, View, Image, Pressable,StyleSheet,Dimensions,FlatList } from "react-native";
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import ProfileScreenCss from './ProfileScreenCss';
 import * as FileSystem from 'expo-file-system';
-
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 const leftImageSource = require('../../../assets/smallLogo.png');
 const rightImageSource = { uri: FileSystem.documentDirectory + 'profilepic.jpg' };
 const windowWidth = Dimensions.get('window').width;
-const containerHeight = windowWidth * 0.15;
 
 
 const ProfileScreen = ({route,navigation}) => {
-  const collectedCoins = 200; // User's collected coins count
+  const collectedCoins = 0; // User's collected coins count
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,33 +41,56 @@ const ProfileScreen = ({route,navigation}) => {
     fetchData();
   }, [route.params.value.token]);
 
-
-  const routes = [
-    { id: '1', name: 'Historische route' },
-    { id: '2', name: 'Otherroute' },
+  const [routes, setRoutes] = useState([
+    { id: '1', name: 'Historische route', selected: false },
+    { id: '2', name: 'Culinaire route', selected: false },
+    { id: '3', name: 'Muziek route', selected: false },
     // Add more routes here
-  ];
-
+  ]);
+  
   const renderRoute = ({ item }) => (
     <View style={ProfileScreenCss.container5}>
-
-        <Pressable style={ProfileScreenCss.button}>
-        <Text style={ProfileScreenCss.texts5}> {item.name} </Text> 
-        </Pressable>
+      <Pressable
+        key={item.id}
+        style={[
+          ProfileScreenCss.button,
+          item.selected ? { backgroundColor: 'white', elevation: 5 } : null,
+        ]}
+        onPress={() => {
+          const updatedRoutes = routes.map((route) => {
+            if (route.id === item.id) {
+              return {
+                ...route,
+                selected: true,
+              };
+            }
+            return {
+              ...route,
+              selected: false,
+            };
+          });
+          setRoutes(updatedRoutes);
+        }}
+      >
+        <Text>
+          {item.selected ? (
+            <FontAwesomeIcon
+              style={[ProfileScreenCss.texts3, { height: 800, color: "#5AA0A7" }]}
+              icon={faCheck}
+            />
+          ) : null}
+          <Text style={[ProfileScreenCss.texts5, { marginLeft: 30 }]}>
+            {" " + item.name}
+          </Text>
+        </Text>
+      </Pressable>
       <Text></Text>
     </View>
   );
 
 
-
   return (<>
-  <View style={{ flex: 1 }}>
-  <LinearGradient
-    colors={['#D9EEED', '#F5F5F5']}
-    start={{ x: 0.5, y: 0.5 }}
-    end={{ x: 1, y: 1 }} // Adjust the end position to cover the entire screen vertically (0.5, 1.0)
-    style={StyleSheet.absoluteFill}
-  ></LinearGradient>
+  <View style={{ flex: 1,backgroundColor:'#F5F5F5' }}>
 
   <View style={ProfileScreenCss.container10}>
     <View style={ProfileScreenCss.leftImageContainer}>
@@ -101,7 +124,7 @@ const ProfileScreen = ({route,navigation}) => {
   </View>
 
   <View style={ProfileScreenCss.container8}>
-    <Pressable style={ProfileScreenCss.buttonStart} onPress={() => navigation.navigate("Login", { email: "jordyhu@live.nl" })}>
+    <Pressable style={ProfileScreenCss.buttonStart} onPress={() =>  navigation.navigate("Walking")}>
       <LinearGradient
         colors={['#94A97F', '#758C5E']}
         start={{ x: 0, y: 0 }}

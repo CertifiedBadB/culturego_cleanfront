@@ -10,6 +10,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 
 const SignUp3Screen = ({navigation}) => {
+  const [fontLoaded, setFontLoaded] = useState(false);
   const [fieldsAreOk, setFieldsAreOk] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

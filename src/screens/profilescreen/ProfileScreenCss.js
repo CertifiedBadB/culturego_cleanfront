@@ -26,7 +26,7 @@ const ProfileScreenCss = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 32,
         fontFamily: 'stratos',
-        borderRadius: 50,
+        borderRadius: 10,
         backgroundColor:'#00000000',
         color: '#5D7049',
       },
@@ -84,7 +84,7 @@ const ProfileScreenCss = StyleSheet.create({
         alignItems: 'flex-start',
       },
       container18: {
-        flex: 0.19,
+        flex: 0.30,
         flexDirection: 'column',
         justifyContent: 'space-between',
       },
@@ -92,7 +92,7 @@ const ProfileScreenCss = StyleSheet.create({
         flexDirection: 'row',
       },
       container5: {
-        flex: 0.05,
+        flex: 0.3,
         alignItems: 'flex-end',
         justifyContent: 'center',
       },
