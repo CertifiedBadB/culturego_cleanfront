@@ -126,7 +126,7 @@ const Logincreen = ({navigation}) => {
       <Text style={LogincreenCss.texts5}>Jouw wachtwoord:</Text>
         </View>
         <View style={[LogincreenCss.container4]} >
-        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="email-address" onChangeText={text => [setPassword(text)]}/>
+        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="email-address" secureTextEntry={true} onChangeText={text => [setPassword(text)]}/>
         </View>
         <View style={LogincreenCss.container8}>
         <Pressable style={LogincreenCss.button} onPress={handleLogin}>
