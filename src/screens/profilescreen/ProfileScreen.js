@@ -12,6 +12,25 @@ const windowWidth = Dimensions.get('window').width;
 
 const ProfileScreen = ({route,navigation}) => {
   const collectedCoins = 0; // User's collected coins count
+  const [allRoutes, setallRoutes] = useState([]);
+  const [selectedRoute, setSelectedRoute] = useState();
+
+  useEffect(() => {
+    // Your data fetching logic and setAllRoutes() code here
+  
+    // Assuming allRoutes is an array of objects with properties `_id` and `name`
+    const updatedRoutes = allRoutes.map((route) => {
+      return {
+        id: route._id,
+        route: route,
+        name: route.title,
+        selected: false,
+      };
+    });
+  
+    setRoutes(updatedRoutes);
+  }, [allRoutes]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,7 +50,8 @@ const ProfileScreen = ({route,navigation}) => {
 
         const data = await response.json();
         console.log(data[0].title);
-        // Handle the data received from the API
+        setallRoutes(data);
+
       } catch (error) {
         console.error(error);
         // Handle any errors that occurred during the request
@@ -41,12 +61,8 @@ const ProfileScreen = ({route,navigation}) => {
     fetchData();
   }, [route.params.value.token]);
 
-  const [routes, setRoutes] = useState([
-    { id: '1', name: 'Historische route', selected: false },
-    { id: '2', name: 'Culinaire route', selected: false },
-    { id: '3', name: 'Muziek route', selected: false },
-    // Add more routes here
-  ]);
+  const [routes, setRoutes] = useState([]);
+  
   
   const renderRoute = ({ item }) => (
     <View style={ProfileScreenCss.container5}>
@@ -57,6 +73,8 @@ const ProfileScreen = ({route,navigation}) => {
           item.selected ? { backgroundColor: 'white', elevation: 5 } : null,
         ]}
         onPress={() => {
+          console.log(JSON.stringify(item.route.points));
+          setSelectedRoute(item.route.points);
           const updatedRoutes = routes.map((route) => {
             if (route.id === item.id) {
               return {
@@ -69,6 +87,7 @@ const ProfileScreen = ({route,navigation}) => {
               selected: false,
             };
           });
+          console.log(selectedRoute);
           setRoutes(updatedRoutes);
         }}
       >
@@ -124,7 +143,7 @@ const ProfileScreen = ({route,navigation}) => {
   </View>
 
   <View style={ProfileScreenCss.container8}>
-    <Pressable style={ProfileScreenCss.buttonStart} onPress={() =>  navigation.navigate("Walking")}>
+    <Pressable style={ProfileScreenCss.buttonStart} onPress={() => [console.log(selectedRoute), navigation.navigate("Walking",{tour: selectedRoute})]}>
       <LinearGradient
         colors={['#94A97F', '#758C5E']}
         start={{ x: 0, y: 0 }}
