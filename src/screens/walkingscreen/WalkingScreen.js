@@ -9,8 +9,9 @@ const WalkingScreen = ({ route,navigation }) => {
   
   const[modalVisible,setModalVisible] = useState(false);
   const[modalVisible2,setModalVisible2] = useState(false);
-  const criticalDistance = 20;
+  const criticalDistance = 200;
   //positie van de gebruiker
+  const [clicked, setClicked] = useState(true);
   const [collected, setCollected] = useState(0);
   const Pulse = require("react-native-pulse").default;
   const [currentPosition, setCurrentPosition] = useState(null);
@@ -174,6 +175,7 @@ function calculateBearing(startCoords, targetCoords) {
   }
 
   function collectPoint() {
+    setCurrentPosition(null);
 	  setFinishWalking(finishWalking-1);
     // const arrCopy = calculatedPositionArray;
     // const arrCopy2 = positionArray;
@@ -326,7 +328,7 @@ function calculateBearing(startCoords, targetCoords) {
             <Text style={styles.Text}>{closestPosition !== null ? closestPosition.position.subInformation : "info"}</Text>
             </View>
           <View style={styles.container3}>
-            <Pressable  style={styles.btnStyle} onPress={() => setModalVisible(false) + pointCollected()}>
+            <Pressable  style={styles.btnStyle} onPress={() => {setModalVisible(false) + pointCollected(), setClicked(true)}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Verzamelen</Text>
             </Pressable >
           </View>

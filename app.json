@@ -7,26 +7,38 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "forceConsistentCasingInFileNames": false,
-    "assetBundlePatterns": ["assets/fonts/Stratos-Regular.tff"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jamajosa.cleanCultureGo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jamajosa.cleanCultureGo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2bf5a7a4-1272-4563-b01a-4ee8b5585761"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/2bf5a7a4-1272-4563-b01a-4ee8b5585761"
     }
   }
 }
