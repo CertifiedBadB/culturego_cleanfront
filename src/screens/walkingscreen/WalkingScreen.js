@@ -9,7 +9,7 @@ const WalkingScreen = ({ route,navigation }) => {
   
   const[modalVisible,setModalVisible] = useState(false);
   const[modalVisible2,setModalVisible2] = useState(false);
-  const criticalDistance = 200;
+  const criticalDistance = 20000;
   //positie van de gebruiker
   const [clicked, setClicked] = useState(true);
   const [collected, setCollected] = useState(0);
@@ -29,6 +29,7 @@ const WalkingScreen = ({ route,navigation }) => {
   const [bearing,setBearing] = useState(0);
   const [finishWalking, setFinishWalking] = useState(0);
   const[positionArray,setPositionArray] = useState([]);
+  const[questionsArray,setQuestionsArray] = useState([]);
   const { tour } = route.params;
 const [isDataFetched, setIsDataFetched] = useState(false);
 
@@ -46,6 +47,16 @@ const fetchAndSetData = () => {
       imageUrl: item.photo,
     };
   });
+  const questionArray = tour.map((item) => {
+    return {
+      question: item.question.question,
+      wronganswer1: item.question.badAnswers[0],
+      wronganswer2: item.question.badAnswers[1],
+      rightAnswer: item.question.goodAnswer,
+      imageUrl: item.photo
+    };
+  });
+  setQuestionsArray(questionArray)
   setPositionArray(UpdatedPosArray);
   // Add a delay of 2 seconds before setting isDataFetched to true
   setTimeout(() => {
@@ -328,9 +339,15 @@ function calculateBearing(startCoords, targetCoords) {
             <Text style={styles.Text}>{closestPosition !== null ? closestPosition.position.subInformation : "info"}</Text>
             </View>
           <View style={styles.container3}>
+          {collected !== 10 ?
             <Pressable  style={styles.btnStyle} onPress={() => {setModalVisible(false) + pointCollected(), setClicked(true)}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Verzamelen</Text>
             </Pressable >
+            :
+            <Pressable  style={styles.btnStyle} onPress={() => {navigation.navigate("Quiz",{questions: questionsArray})}}>
+              <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Start de Quiz</Text>
+            </Pressable >
+            }
           </View>
         </View>
 	  </Modal>

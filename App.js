@@ -12,6 +12,7 @@ import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
 import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
 import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
 import WalkingScreen from './src/screens/walkingscreen/WalkingScreen';
+import QuizScreen from './src/screens/quizscreen/QuizScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -76,6 +77,11 @@ export default function App() {
           <Stack.Screen
             name="Profile"
             component={ProfileScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Quiz"
+            component={QuizScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
