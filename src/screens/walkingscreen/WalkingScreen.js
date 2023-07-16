@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image, Modal, TouchableOpacity , Pressable } from 'react-native';
+import { ScrollView,Text, View, StyleSheet, Image, Modal, TouchableOpacity , Pressable } from 'react-native';
 import { getPreciseDistance } from "geolib";
 import { StatusBar } from "expo-status-bar";
 import * as Location from 'expo-location'; // Modified import statement
@@ -333,10 +333,13 @@ function calculateBearing(startCoords, targetCoords) {
             <Image style={styles.backgroundImage4} source={closestPosition !== null ? {uri:closestPosition.position.imageUrl} : null}/>	
           </View>
           <View style={styles.container4}>
+            
             <Text style={[styles.text2,{fontSize:25}]}>{closestPosition !== null ? closestPosition.position.title: "title"}</Text>
           </View>
           <View style={styles.container3}>
+            <ScrollView>
             <Text style={styles.Text}>{closestPosition !== null ? closestPosition.position.subInformation : "info"}</Text>
+            </ScrollView>
             </View>
           <View style={styles.container3}>
           {collected !== 10 ?

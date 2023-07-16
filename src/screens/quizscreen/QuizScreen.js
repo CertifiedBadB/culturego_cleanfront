@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text, View, Image, Pressable, StyleSheet, Dimensions, FlatList } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import QuizScreenCss from './QuizScreenCss';
-import * as FileSystem from 'expo-file-system';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -27,7 +23,6 @@ const QuizScreen = ({ route, navigation }) => {
         isCorrect: false,
       };
     });
-
     setQuestions(updatedQuestions);
   }, [questions]);
 

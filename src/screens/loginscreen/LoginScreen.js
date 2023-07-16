@@ -1,9 +1,8 @@
 import { Text, View, Pressable,StyleSheet,TextInput} from "react-native";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import LogincreenCss from './LoginScreenCss';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { Constants } from 'expo-constants';
 import jwtDecode from 'jwt-decode'; 
 
 const Logincreen = ({navigation}) => {
@@ -126,7 +125,7 @@ const Logincreen = ({navigation}) => {
       <Text style={LogincreenCss.texts5}>Jouw wachtwoord:</Text>
         </View>
         <View style={[LogincreenCss.container4]} >
-        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="email-address" secureTextEntry={true} onChangeText={text => [setPassword(text)]}/>
+        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="text" secureTextEntry={true} onChangeText={text => [setPassword(text)]}/>
         </View>
         <View style={LogincreenCss.container8}>
         <Pressable style={LogincreenCss.button} onPress={handleLogin}>
