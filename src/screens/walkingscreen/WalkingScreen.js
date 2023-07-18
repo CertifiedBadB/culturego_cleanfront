@@ -342,7 +342,7 @@ function calculateBearing(startCoords, targetCoords) {
             </ScrollView>
             </View>
           <View style={styles.container3}>
-          {collected !== 10 ?
+          {collected !== 1 ?
             <Pressable  style={styles.btnStyle} onPress={() => {setModalVisible(false) + pointCollected(), setClicked(true)}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Verzamelen</Text>
             </Pressable >

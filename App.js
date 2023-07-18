@@ -12,7 +12,7 @@ import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
 import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
 import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
 import WalkingScreen from './src/screens/walkingscreen/WalkingScreen';
-import QuizScreen from './src/screens/quizscreen/QuizScreen';
+import QuizScreen from './src/screens/quizscreennew/QuizScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
