@@ -4,12 +4,12 @@ import { getPreciseDistance } from "geolib";
 import { StatusBar } from "expo-status-bar";
 import * as Location from 'expo-location'; // Modified import statement
 import LoadingScreen from '../loadingscreen/LoadingScreen';
-
+import AppContext from "../../../assets/MyContext";
 const WalkingScreen = ({ route,navigation }) => {
   
   const[modalVisible,setModalVisible] = useState(false);
   const[modalVisible2,setModalVisible2] = useState(false);
-  const criticalDistance = 20000;
+  const criticalDistance = 25;
   //positie van de gebruiker
   const [clicked, setClicked] = useState(true);
   const [collected, setCollected] = useState(0);
@@ -342,7 +342,7 @@ function calculateBearing(startCoords, targetCoords) {
             </ScrollView>
             </View>
           <View style={styles.container3}>
-          {collected !== 1 ?
+          {collected !== 10 ?
             <Pressable  style={styles.btnStyle} onPress={() => {setModalVisible(false) + pointCollected(), setClicked(true)}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Verzamelen</Text>
             </Pressable >

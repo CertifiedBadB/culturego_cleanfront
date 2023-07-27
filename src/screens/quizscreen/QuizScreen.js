@@ -7,7 +7,7 @@ const windowWidth = Dimensions.get('window').width;
 const QuizScreen = ({ route, navigation }) => {
   const collectedCoins = 0; // User's collected coins count
   const [allQuestions, setQuestions] = useState([]);
-  const { questions } = route.params;
+  const { questions } = route.params.questions;
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentObject = allQuestions[currentIndex];
 

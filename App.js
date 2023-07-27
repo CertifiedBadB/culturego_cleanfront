@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import React,{ useEffect, useState, useRef } from 'react';
 import { StyleSheet, View, StatusBar, Animated,Platform } from 'react-native';
 import * as Font from 'expo-font';
 import * as NavigationBar from 'expo-navigation-bar';
@@ -13,14 +13,37 @@ import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
 import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
 import WalkingScreen from './src/screens/walkingscreen/WalkingScreen';
 import QuizScreen from './src/screens/quizscreennew/QuizScreen';
+import AppContext from './assets/MyContext';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [userValue, setUserValue] = useState(false);
+  const [pointsValue, setPointsValue] = useState(false);
+  const [tokenValue, setTokenValue] = useState(false);
+
+  const userSettings = {
+    tokenValue: tokenValue, // Initial value for tokenValue
+    setTokenValue: setTokenValue, // Function to set tokenValue
+    userValue: userValue, // Initial value for userValue
+    setUserValue: setUserValue, // Function to set userValue
+    pointsValue: pointsValue, // Initial value for pointsValue
+    setPointsValue: setPointsValue, // Function to set pointsValue
+  };
+
   const [fontLoaded, setFontLoaded] = useState(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   if (Platform.OS === 'android') {
      NavigationBar.setVisibilityAsync("hidden");
     }
+
+    useEffect(() => {
+      // Cleanup function to clear the token when the component unmounts
+      return () => {
+        setUserValue(null);
+        setPointsValue(null);
+        setTokenValue(null); // Set the token to null or any appropriate initial value to clear it
+      };
+    }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -64,15 +87,16 @@ export default function App() {
   }
 
   return (
+    <AppContext.Provider value={userSettings} style={styles.container}>
     <View style={styles.container}>
       <StatusBar translucent backgroundColor="#F5F5F5" />
-      <NavigationContainer>
-        <Stack.Navigator>
+      <NavigationContainer style={styles.container}>
+        <Stack.Navigator style={styles.container}>
         
           <Stack.Screen
             name="Startup"
             component={StartScreen}
-            options={{ headerShown: false }}
+            options={{ headerShown: false }}style={styles.container}
           />
           <Stack.Screen
             name="Profile"
@@ -112,6 +136,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </View>
+    </AppContext.Provider>
   );
 }
 
@@ -119,5 +144,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#CEE7ED',
+    bottom:0
   },
 });

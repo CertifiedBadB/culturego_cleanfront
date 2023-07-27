@@ -18,24 +18,43 @@ const QuizScreenCss = StyleSheet.create({
         color:"#fff"
       },
       button: {
-        alignSelf: 'center', // Aligns the button text to the start
+        overflow: 'hidden',
+        alignSelf: "baseline",
         width: '80%',
-        height: 48, // Adjust the height as needed
+        height: "90%",
         justifyContent: 'center',
-        alignItems: 'center', // Aligns the button text to the start
-        //paddingVertical: 12,
-        //paddingHorizontal: 32,
-        fontFamily: 'stratos',
-        borderRadius: 10,
-        //backgroundColor:'#00000000',
-        color: '#5D7049',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        fontFamily: "stratos",
+        borderRadius: 50,
+        elevation: 5,
+        backgroundColor: '#5D7049',
+        color:"#fff"
+      },
+      button2: {
+        alignSelf: "center",
+        width: '80%',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        fontFamily: "stratos",
+        borderRadius: 50,
+        elevation: 5,
+        backgroundColor: '#fff',
+        color:"#5D7049"
       },
       container40: {
         //backgroundColor: '#F5F5F5',
-        flex: 0.20,
+        flex: 0.35,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'center',
+        fontWeight: "bold",
+        fontFamily: "stratos",
+        alignSelf: "center",
+        textAlign: "center",
+        fontSize: 14,
+        color: "#5D7049"
       },
       container10: {
         justifyContent: 'center',
@@ -159,6 +178,14 @@ const QuizScreenCss = StyleSheet.create({
         borderRadius:999,
         overflow:'hidden',
     },
+    timer:{
+      fontWeight: "bold",
+        fontFamily: "stratos",
+        alignSelf: "center",
+        textAlign: "center",
+        fontSize: 25,
+        color: "#5AA0A7"
+    }
 });
 
 export default QuizScreenCss;

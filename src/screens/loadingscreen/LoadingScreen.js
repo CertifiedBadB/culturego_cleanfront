@@ -44,7 +44,7 @@ const LoadingScreen = ({route,navigation}) => {
     </View>
   );
   }
-  if(route == 1){
+  if(route === 1){
     return (
       <View style={[styles.container,{backgroundColor:'#77C66E'}]}>
         <View style={styles.textContainer}>
@@ -55,12 +55,23 @@ const LoadingScreen = ({route,navigation}) => {
       </View>
     )
   }
-  if(route == 2){
+  if(route === 2){
     return (
       <View style={[styles.container, {backgroundColor: '#F4444E'}]}>
         <View style={styles.textContainer}>
           <Animated.Text style={[styles.text, { transform: [{ scale }] }]}>
             <Text style={{ fontWeight: 'bold',color: 'white' }}>Helaas, fout antwoord!</Text>
+          </Animated.Text>
+        </View>
+      </View>
+    )
+  }
+  if(route === 3){
+    return (
+      <View style={[styles.container, {backgroundColor: '#FFA500'}]}>
+        <View style={styles.textContainer}>
+          <Animated.Text style={[styles.text, { transform: [{ scale }] }]}>
+            <Text style={{ fontWeight: 'bold',color: 'white' }}>Helaas, te laat!</Text>
           </Animated.Text>
         </View>
       </View>

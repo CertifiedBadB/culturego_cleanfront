@@ -1,5 +1,5 @@
 import { Text, View, Image, Pressable,StyleSheet,Dimensions,FlatList } from "react-native";
-import { useEffect,useState } from 'react';
+import { useEffect,useState, useContext } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import ProfileScreenCss from './ProfileScreenCss';
 import * as FileSystem from 'expo-file-system';
@@ -8,13 +8,16 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 const leftImageSource = require('../../../assets/smallLogo.png');
 const rightImageSource = { uri: FileSystem.documentDirectory + 'profilepic.jpg' };
 const windowWidth = Dimensions.get('window').width;
-
+import AppContext from "../../../assets/MyContext";
 
 const ProfileScreen = ({route,navigation}) => {
-  const collectedCoins = 0; // User's collected coins count
+  const { pointsValue, setPointsValue } = useContext(AppContext);
+  const { tokenValue, setTokenValue } = useContext(AppContext);
+  const { userValue, setUserValue } = useContext(AppContext);
+  const  points  = pointsValue; // User's collected coins count
   const [allRoutes, setallRoutes] = useState([]);
   const [selectedRoute, setSelectedRoute] = useState();
-
+  
   useEffect(() => {
     // Your data fetching logic and setAllRoutes() code here
   
@@ -34,7 +37,7 @@ const ProfileScreen = ({route,navigation}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const token = route.params.token;
+        const token = tokenValue;
         const url = 'https://cultgo.azurewebsites.net/paths/get';
 
         const response = await fetch(url, {
@@ -125,7 +128,7 @@ const ProfileScreen = ({route,navigation}) => {
   <View style={ProfileScreenCss.container40}>
     <View style={styles.blueBox}>
       <Image source={require('../../../assets/coin.png')} style={styles.coinImage} />
-      <Text style={styles.coinText}>{collectedCoins}</Text>
+      <Text style={styles.coinText}>{pointsValue}</Text>
     </View>
   </View>
 

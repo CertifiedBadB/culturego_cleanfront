@@ -1,12 +1,16 @@
 import { Text, View, Pressable,StyleSheet,TextInput} from "react-native";
-import { useState } from 'react';
+import { useState,useContext  } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import LogincreenCss from './LoginScreenCss';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import jwtDecode from 'jwt-decode'; 
+import AppContext from "../../../assets/MyContext";
 
 const Logincreen = ({navigation}) => {
   const [fieldsAreOk, setFieldsAreOk] = useState(false);
+  const { tokenValue, setTokenValue } = useContext(AppContext);
+  const { userValue, setUserValue } = useContext(AppContext);
+  const { pointsValue, setPointsValue } = useContext(AppContext);
   const checkFields = (text) =>{
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(text) === true){
@@ -60,7 +64,7 @@ const Logincreen = ({navigation}) => {
           password: password,
         }),
       });
-  
+      console.log(response);
       if (response.ok) {
         // Login successful, handle the response
         const data = await response.json();
@@ -70,13 +74,16 @@ const Logincreen = ({navigation}) => {
         // Verify the token
         const isTokenValid = verifyToken(token);
         if (isTokenValid) {
+          setTokenValue(token)
           // Token is valid, perform further actions
           const decodedToken = jwtDecode(token);
           const userId = decodedToken.id;
+          setUserValue(userId)
+          setPointsValue(data.points)
           if(userId == UID){
             console.log('User ID:', userId);
             //go to the profile screen
-            navigation.navigate('Profile', { value: userId , token })
+            navigation.navigate('Profile', { value: userId , token , points: data.points })
           }
           
         } else {
@@ -115,17 +122,16 @@ const Logincreen = ({navigation}) => {
       <View style={LogincreenCss.container10}>
         <Text style={LogincreenCss.texts2}>Ga weer verder met jouw cultuurwandelingen</Text>
       </View>
-      <View style={[LogincreenCss.container4, { flex:0.03,justifyContent: 'flex-start',left:'5%'}]} >
-      <Text style={LogincreenCss.texts5}>Jouw email:</Text>
-        </View>
+      
       <View style={[LogincreenCss.container4]} >
-        <TextInput style={LogincreenCss.input} placeholder="E-mailadres" keyboardType="email-address" onChangeText={text => [checkFields(text),setEmail(text)]}/>
+        <TextInput style={LogincreenCss.input} placeholder="E-mailadres" keyboardType="email-address" onChangeText={text => [setEmail(text)]}/>
+        </View>
+        
+        <View style={[LogincreenCss.container4]} >
+        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="default" secureTextEntry={true} onChangeText={text => [setPassword(text)]}/>
         </View>
         <View style={[LogincreenCss.container4, { flex:0.03,justifyContent: 'flex-start',left:'5%'}]} >
-      <Text style={LogincreenCss.texts5}>Jouw wachtwoord:</Text>
-        </View>
-        <View style={[LogincreenCss.container4]} >
-        <TextInput style={LogincreenCss.input} placeholder="Wachtwoord" keyboardType="text" secureTextEntry={true} onChangeText={text => [setPassword(text)]}/>
+      
         </View>
         <View style={LogincreenCss.container8}>
         <Pressable style={LogincreenCss.button} onPress={handleLogin}>

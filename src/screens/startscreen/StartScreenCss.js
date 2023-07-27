@@ -1,9 +1,25 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions  } from 'react-native';
 
-
+const windowHeight = Dimensions.get('window').height;
 
 const StartScreenCss = StyleSheet.create({
-
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#F5F5F5',
+    },
+    backgroundContainer: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
+    },
+    backgroundImage: {
+      justifyContent:'flex-end',
+      width: 4500,
+    },
     button: {
         overflow: 'hidden',
         alignSelf: "baseline",
@@ -32,40 +48,34 @@ const StartScreenCss = StyleSheet.create({
         color:"#5D7049"
       },
       container40: {
-        backgroundColor: '#F5F5F5',
         flex: 0.35,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'flex-end',
       },
       container10: {
-        backgroundColor: '#F5F5F5',
         flex: 0.15,
         flexDirection: "row",
       },
       container15: {
-        backgroundColor: '#F5F5F5',
         flex: 0.15,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'flex-end',
       },
       container8: {
-        backgroundColor: '#F5F5F5',
         flex: 0.08,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'flex-start',
       },
       container7: {
-        backgroundColor: '#F5F5F5',
         flex: 0.08,
         flexDirection: "row",
         justifyContent: 'center',
         alignItems: 'flex-start',
       },
       container9: {
-        backgroundColor: '#F5F5F5',
         flex: 0.09,
         flexDirection: "row",
         justifyContent: 'center',

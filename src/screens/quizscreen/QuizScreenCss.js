@@ -18,17 +18,18 @@ const QuizScreenCss = StyleSheet.create({
         color:"#fff"
       },
       button: {
-        alignSelf: 'center', // Aligns the button text to the start
+        overflow: 'hidden',
+        alignSelf: "baseline",
         width: '80%',
-        height: 48, // Adjust the height as needed
+        height: "90%",
         justifyContent: 'center',
-        alignItems: 'center', // Aligns the button text to the start
-        //paddingVertical: 12,
-        //paddingHorizontal: 32,
-        fontFamily: 'stratos',
-        borderRadius: 10,
-        //backgroundColor:'#00000000',
-        color: '#5D7049',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        fontFamily: "stratos",
+        borderRadius: 50,
+        elevation: 5,
+        backgroundColor: '#5D7049',
+        color:"#fff"
       },
       container40: {
         //backgroundColor: '#F5F5F5',
