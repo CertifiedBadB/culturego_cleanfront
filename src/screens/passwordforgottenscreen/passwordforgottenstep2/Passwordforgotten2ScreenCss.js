@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 
 
-const LogincreenCss = StyleSheet.create({
+const Passwordforgotten2ScreenCss = StyleSheet.create({
   container4:{
     flex:0.04,
     width: null,
@@ -152,4 +152,4 @@ const LogincreenCss = StyleSheet.create({
       }
 });
 
-export default LogincreenCss;
+export default Passwordforgotten2ScreenCss;

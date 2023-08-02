@@ -133,7 +133,7 @@ const Logincreen = ({navigation}) => {
         <View style={[LogincreenCss.container4, { flex:0.03,justifyContent: 'flex-start',left:'5%'}]} >
       
         </View>
-        <View style={LogincreenCss.container8}>
+        <View style={LogincreenCss.container6}>
         <Pressable style={LogincreenCss.button} onPress={handleLogin}>
         <LinearGradient
           colors={['#94A97F', '#758C5E']}
@@ -142,9 +142,13 @@ const Logincreen = ({navigation}) => {
           style={[StyleSheet.absoluteFill,{color:'#fff'}]}
         ></LinearGradient>
         <Text style={LogincreenCss.texts6}>Inloggen</Text>
-        </Pressable>
+        </Pressable></View>
+        <View style={LogincreenCss.container6}>
+        <Pressable style={LogincreenCss.button2} onPress={() => navigation.navigate("SignUp1")}>
+              <Text style={LogincreenCss.texts3}>Wachtwoord vergeten</Text>
+            </Pressable>
       </View>
-      <View style={LogincreenCss.container11}></View>
+      
       </KeyboardAwareScrollView>
   );
 };

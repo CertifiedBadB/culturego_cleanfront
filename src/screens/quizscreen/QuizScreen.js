@@ -10,7 +10,9 @@ const QuizScreen = ({ route, navigation }) => {
   const { questions } = route.params.questions;
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentObject = allQuestions[currentIndex];
-
+  const { pointsValue, setPointsValue } = useContext(AppContext);
+  const { tokenValue, setTokenValue } = useContext(AppContext);
+  const { userValue, setUserValue } = useContext(AppContext);
   useEffect(() => {
     const updatedQuestions = questions.map((item) => {
       return {

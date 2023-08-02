@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 
 const Timer = ({ onTimeUp }) => {
-  const [time, setTime] = useState(3000); // 30 seconds in milliseconds
+  const [time, setTime] = useState(30000); // 30 seconds in milliseconds
 
   useEffect(() => {
     let startTime = Date.now();
@@ -10,7 +10,7 @@ const Timer = ({ onTimeUp }) => {
     const timer = setInterval(() => {
       const currentTime = Date.now();
       const elapsedTime = currentTime - startTime;
-      const newTime = Math.max(0, 3000 - elapsedTime); // Prevent negative values
+      const newTime = Math.max(0, 30000 - elapsedTime); // Prevent negative values
 
       setTime(newTime);
 

@@ -1,45 +1,47 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions  } from 'react-native';
 
+const windowHeight = Dimensions.get('window').height;
 
-
-const LogincreenCss = StyleSheet.create({
+const ConvertScreenCss = StyleSheet.create({
   container4:{
-    flex:0.04,
+    flex:0.1,
     width: null,
     height: null,
     flexDirection: "row",
     justifyContent: 'center', //Centered horizontally
     alignItems: 'flex-start', //Centered vertically
   },
-  container6:{
-    flex:0.07,
-    width: null,
-    height: null,
-    flexDirection: "row",
-    justifyContent: 'center', //Centered horizontally
-    alignItems: 'flex-end', //Centered vertically
+  input: {
+    width:'80%',
+    borderColor: "white",
+    borderWidth: 0,
+    borderRadius: 10,
+    padding: 10,
+    alignItems: 'flex-start',
+    backgroundColor:"#fff"
   },
-  container: {
-    flex: 1, // Make the ScrollView take up the entire screen
-  },
-  contentContainer: {
-    flexGrow: 1, // Allow the content to grow vertically within the ScrollView
-  },
-    input: {
-      width:'80%',
-      borderColor: "white",
-      borderWidth: 0,
-      borderRadius: 10,
-      padding: 10,
-      alignItems: 'flex-start',
-      backgroundColor:"#fff"
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#F5F5F5',
     },
-
+    backgroundContainer: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
+    },
+    backgroundImage: {
+      justifyContent:'flex-end',
+      width: 4500,
+    },
     button: {
         overflow: 'hidden',
         alignSelf: "baseline",
         width: '80%',
-        height: "80%",
+        height: "90%",
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 32,
@@ -52,7 +54,7 @@ const LogincreenCss = StyleSheet.create({
       button2: {
         alignSelf: "baseline",
         width: '80%',
-        height: "80%",
+        height: "90%",
         justifyContent: 'center',
         paddingVertical: 12,
         paddingHorizontal: 32,
@@ -65,16 +67,11 @@ const LogincreenCss = StyleSheet.create({
       container40: {
         flex: 0.35,
         flexDirection: "row",
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'flex-end',
       },
       container10: {
-        justifyContent: 'center',
         flex: 0.15,
-        flexDirection: "row",
-      },
-      container11: {
-        justifyContent: 'center',
-        flex: 0.11,
         flexDirection: "row",
       },
       container15: {
@@ -121,20 +118,6 @@ const LogincreenCss = StyleSheet.create({
         color: "#5D7049",
       },
       texts4: {
-        fontWeight: '900',
-        fontFamily: "stratos",
-        alignSelf: "center",
-        textAlign: "center",
-        fontSize: 30,
-        color: "#5AA0A7",
-      },
-      texts5: {
-        fontWeight: "bold",
-        fontFamily: "stratos",
-        fontSize: 14,
-        color: "#5D7049",
-      },
-      texts6: {
         fontWeight: "bold",
         fontFamily: "stratos",
         alignSelf: "center",
@@ -144,7 +127,7 @@ const LogincreenCss = StyleSheet.create({
       },
       headerImagestyle: {
         alignSelf: "flex-start",
-        marginTop: '10%',
+        marginTop: '15%',
         resizeMode: 'contain',
         paddingBottom: 0,
         width: '60%',
@@ -152,4 +135,4 @@ const LogincreenCss = StyleSheet.create({
       }
 });
 
-export default LogincreenCss;
+export default ConvertScreenCss;

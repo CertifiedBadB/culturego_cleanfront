@@ -126,10 +126,12 @@ const ProfileScreen = ({route,navigation}) => {
   </View>
 
   <View style={ProfileScreenCss.container40}>
+  <Pressable onPress={() => navigation.navigate("Convert")}>
     <View style={styles.blueBox}>
       <Image source={require('../../../assets/coin.png')} style={styles.coinImage} />
       <Text style={styles.coinText}>{pointsValue}</Text>
     </View>
+    </Pressable>
   </View>
 
   <View style={[ProfileScreenCss.container10, { justifyContent: 'center', alignItems: 'center' }]}>

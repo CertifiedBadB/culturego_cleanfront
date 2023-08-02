@@ -10,8 +10,11 @@ import LoginScreen from './src/screens/loginscreen/LoginScreen';
 import SignUp1Screen from './src/screens/signupscreens/signupstep1/SignUp1';
 import SignUp2Screen from './src/screens/signupscreens/signupstep2/SignUp2';
 import SignUp3Screen from './src/screens/signupscreens/signupstep3/SignUp3';
+import Passwordforgotten1Screen from './src/screens/passwordforgottenscreen/passwordforgottenstep1/Passwordforgotten1Screen';
+import Passwordforgotten2Screen from './src/screens/passwordforgottenscreen/passwordforgottenstep2/Passwordforgotten2Screen';
 import ProfileScreen from './src/screens/profilescreen/ProfileScreen';
 import WalkingScreen from './src/screens/walkingscreen/WalkingScreen';
+import ConvertScreen from './src/screens/convertscreen/ConvertScreen';
 import QuizScreen from './src/screens/quizscreennew/QuizScreen';
 import AppContext from './assets/MyContext';
 const Stack = createNativeStackNavigator();
@@ -92,7 +95,16 @@ export default function App() {
       <StatusBar translucent backgroundColor="#F5F5F5" />
       <NavigationContainer style={styles.container}>
         <Stack.Navigator style={styles.container}>
-        
+        <Stack.Screen
+            name="Passwordforgotten1"
+            component={Passwordforgotten1Screen}
+            options={{ headerShown: false }}style={styles.container}
+          />
+          <Stack.Screen
+            name="Passwordforgotten2"
+            component={Passwordforgotten2Screen}
+            options={{ headerShown: false }}style={styles.container}
+          />
           <Stack.Screen
             name="Startup"
             component={StartScreen}
@@ -113,6 +125,10 @@ export default function App() {
             component={LoginScreen}
             options={{ headerShown: false }}
           />
+          <Stack.Screen 
+          name="Convert"
+          component={ConvertScreen}
+          options={{ headerShown: false }}style={styles.container}/>
           <Stack.Screen
             name="SignUp1"
             component={SignUp1Screen}
