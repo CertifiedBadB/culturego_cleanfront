@@ -95,16 +95,6 @@ export default function App() {
       <StatusBar translucent backgroundColor="#F5F5F5" />
       <NavigationContainer style={styles.container}>
         <Stack.Navigator style={styles.container}>
-        <Stack.Screen
-            name="Passwordforgotten1"
-            component={Passwordforgotten1Screen}
-            options={{ headerShown: false }}style={styles.container}
-          />
-          <Stack.Screen
-            name="Passwordforgotten2"
-            component={Passwordforgotten2Screen}
-            options={{ headerShown: false }}style={styles.container}
-          />
           <Stack.Screen
             name="Startup"
             component={StartScreen}
@@ -114,6 +104,16 @@ export default function App() {
             name="Profile"
             component={ProfileScreen}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Passwordforgotten1"
+            component={Passwordforgotten1Screen}
+            options={{ headerShown: false }}style={styles.container}
+          />
+          <Stack.Screen
+            name="Passwordforgotten2"
+            component={Passwordforgotten2Screen}
+            options={{ headerShown: false }}style={styles.container}
           />
           <Stack.Screen
             name="Quiz"
