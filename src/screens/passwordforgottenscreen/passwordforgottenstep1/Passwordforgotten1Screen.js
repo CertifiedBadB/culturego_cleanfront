@@ -25,7 +25,7 @@ const Passwordforgotten1Screen = ({navigation}) => {
 
   async function handleNextScreen(){
     try {
-      const response = await fetch('https://cultgo.azurewebsites.net/users/passwordreset1', {
+      const response = await fetch('https://cultgo.azurewebsites.net/users/requestPasswordReset', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
