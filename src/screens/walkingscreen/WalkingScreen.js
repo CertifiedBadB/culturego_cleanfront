@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { ScrollView,Text, View, StyleSheet, Image, Modal, TouchableOpacity , Pressable } from 'react-native';
+import { ScrollView,Text, View, StyleSheet, Image, Modal, TouchableOpacity, Pressable } from 'react-native';
 import { getPreciseDistance } from "geolib";
 import { StatusBar } from "expo-status-bar";
 import * as Location from 'expo-location'; // Modified import statement
 import LoadingScreen from '../loadingscreen/LoadingScreen';
-import AppContext from "../../../assets/MyContext";
+
 const WalkingScreen = ({ route,navigation }) => {
   
   const[modalVisible,setModalVisible] = useState(false);
   const[modalVisible2,setModalVisible2] = useState(false);
-  const criticalDistance = 25;
+  const criticalDistance = 250000;
   //positie van de gebruiker
   const [clicked, setClicked] = useState(true);
   const [collected, setCollected] = useState(0);
@@ -69,7 +69,6 @@ const fetchAndSetData = () => {
     useEffect(() => {
       const observerCallback = async (position, heading) => {
         if (isDataFetched && position && position.coords) {
-          console.log(positionArray);
           await setCurrentPosition(position);
           await pushClosestPosition(position);
         }
@@ -205,6 +204,13 @@ function calculateBearing(startCoords, targetCoords) {
     setCollected(collected+1);
   }
 
+  function navigator(){
+    console.log("hello");
+    // console.log(questionsArray);  
+    navigation.replace("Quiz", { questions: questionsArray });
+    console.log(navigation);
+  };
+
 
   return (
     
@@ -214,13 +220,16 @@ function calculateBearing(startCoords, targetCoords) {
   <View style={[styles.container4,{  height:2, alignSelf: 'stretch'}]}>
 
   </View>
-
+  
+              
       <View style={styles.container1}>
         <Image
           source={require("../../../assets/smallLogo.png")}
           style={styles.backgroundImage2}
         />
       </View>
+ 
+            
       <View style={styles.container2}>
         {closestPosition !== null &&  closestPosition.distance <= 60
           ? <Pulse
@@ -329,9 +338,11 @@ function calculateBearing(startCoords, targetCoords) {
         onRequestClose={() => setModalVisible(false)}
         >
         <View style={[styles.container]}>
+
           <View style={styles.container1}>
             <Image style={styles.backgroundImage4} source={closestPosition !== null ? {uri:closestPosition.position.imageUrl} : null}/>	
-          </View>
+          </View> 
+
           <View style={styles.container4}>
             
             <Text style={[styles.text2,{fontSize:25}]}>{closestPosition !== null ? closestPosition.position.title: "title"}</Text>
@@ -342,12 +353,12 @@ function calculateBearing(startCoords, targetCoords) {
             </ScrollView>
             </View>
           <View style={styles.container3}>
-          {collected !== 10 ?
+          {collected !== 1 ?
             <Pressable  style={styles.btnStyle} onPress={() => {setModalVisible(false) + pointCollected(), setClicked(true)}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Verzamelen</Text>
             </Pressable >
             :
-            <Pressable  style={styles.btnStyle} onPress={() => {navigation.navigate("Quiz",{questions: questionsArray})}}>
+            <Pressable  style={styles.btnStyle} onPress={() => {navigator()}}>
               <Text style={[styles.Text,{color:"white", fontSize:18,fontWeight:'bold'}]}>Start de Quiz</Text>
             </Pressable >
             }

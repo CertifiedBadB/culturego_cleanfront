@@ -53,6 +53,7 @@ const SignUp2Screen = ({ route, navigation }) => {
       
   
     } catch (error) {
+      console.log(email+ " " + password)
       console.log('Signup error:', error.message);
       // Handle error (display error message, show a notification, etc.)
     }

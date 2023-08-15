@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Text, View, Image, Pressable, StyleSheet, Dimensions } from 'react-native';
 import QuizScreenCss from './QuizScreenCss';
 import LoadingScreen from '../loadingscreen/LoadingScreen';
 import Timer from './Timer';
 import { LinearGradient } from 'expo-linear-gradient';
-import ProfileScreen from '../profilescreen/ProfileScreen';
 const windowWidth = Dimensions.get('window').width;
 import AppContext from "../../../assets/MyContext";
 
@@ -33,7 +32,7 @@ const QuizScreen = ({ route, navigation }) => {
   const [questionCounter, setQuestionCounter] = useState(1);
 
   useEffect(() => {
-    //console.log(questions);
+    console.log(questions);
     const updatedQuestions = questions.map((item) => {
       return {
         question: item.question,
